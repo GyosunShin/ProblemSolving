@@ -25,13 +25,13 @@ const int dc[] = {-1, 1, -1, 1};
 int ans = -1 * 0x7fffffff;
 
 void dfs(int start_r, int start_c, int cur_r, int cur_c, bool flag, int len){
-	printf("START_R : %d / START_C : %d\nCUR_R : %d / CUR_C : %d\n LEN : %d\n\n", start_r, start_c, cur_r, cur_c, len);
+//	printf("START_R : %d / START_C : %d\nCUR_R : %d / CUR_C : %d\n LEN : %d\n\n", start_r, start_c, cur_r, cur_c, len);
 	if(!flag){
 		desert[map[start_r][start_c]] = 1;
 		visited[start_r][start_c] = 1;
 	}
 	if(start_r == cur_r && start_c == cur_c && flag){
-		printf("PANBYILING! : %d\n", len);
+//		printf("PANBYILING! : %d\n", len);
 		if(ans < len)	ans = len;
 		return;
 	}
@@ -79,7 +79,7 @@ int main(){
 		
 		for(int i = 0 ; i < N ; ++i){
 			for(int j = 0 ; j < N ; ++j){
-				printf("I : %d / J : %d\n", i, j);
+//				printf("I : %d / J : %d\n", i, j);
 				if((i == 0 && j == 0) || (i == 0 && j == N-1) || (i == N-1 && j == 0) || (i == N-1 && j == N-1))	continue;
 				dfs(i, j, i, j, false, 0);
 			}
