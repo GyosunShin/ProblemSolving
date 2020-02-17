@@ -44,21 +44,12 @@ int fuckyou(int r, int c){
 void dfs(int r, int c, int len){  // (r, c) : 시작점 
 
 	if(picked.size() == 4){
-//		for(int i = 0 ; i < picked.size() ; ++i){
-//			printf("[EVERY](R : %d / C : %d)  ", picked[i].r, picked[i].c);
-//		}		
-//		printf("\n");
 		int tmp_sum = 0;
 		for(int i = 0 ; i < picked.size() ; ++i){
 			tmp_sum += map[picked[i].r][picked[i].c];
 		}
 		if(tmp_sum > ans){
-//			for(int i = 0 ; i < picked.size() ; ++i){
-//				printf("(R : %d / C : %d)  ", picked[i].r, picked[i].c);
-//			}
-//			printf("\n");
 			ans = tmp_sum;
-//			printf("ans : %d\n", ans);
 		}
 		
 		return;
@@ -66,10 +57,6 @@ void dfs(int r, int c, int len){  // (r, c) : 시작점
 	
 	for(int dir = 0 ; dir < 4 ; ++dir){
 		int next_r = r + dr[dir];	int next_c = c + dc[dir];
-//		if(0 > next_r || next_r >= N || 0 > next_c || next_c >= M || visited[next_r][next_c] != 0){
-//			continue;
-//		}
-		
 		
 		if(0 <= next_r && next_r < N && 0 <= next_c && next_c < M && visited[next_r][next_c] == 0){
 			INFO next;	next.r = next_r;	next.c = next_c;
@@ -91,12 +78,10 @@ int main(){
 			scanf("%d", &map[i][j]);
 		}
 	}
-	//#################################
 	
 	// DFS를 이용해서 4개가 이어진 모든 것을 해보겠다! 
 	for(int i = 0 ; i < N ; ++i){
 		for(int j = 0 ; j < M ; ++j){
-			
 			picked.clear();
 			INFO start;	start.r = i;	start.c = j;
 			visited[i][j] = 1;
@@ -118,7 +103,7 @@ int main(){
 	
 	int real = max(ans, ttmp_ans);
 	
-	printf("%d",real);
+	printf("%d", real);
 	return 0;
 	
 }
