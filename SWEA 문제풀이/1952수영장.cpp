@@ -32,7 +32,6 @@ int main(){
 	scanf("%d", &T);
 	for(int z = 1 ; z <= T ; ++z){
 		memset(cache, -1, sizeof(cache));
-		memset(plan, 0, sizeof(plan));
 		scanf("%d %d %d %d", &d, &m, &ms, &y);
 		for(int i = 0 ; i < 12 ; ++i)	scanf("%d", &plan[i]);
 		//####################################################
