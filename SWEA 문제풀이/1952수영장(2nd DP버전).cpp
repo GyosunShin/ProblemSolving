@@ -1,53 +1,39 @@
 // 가장 적은 비용으로 수영장을 이용할 수 있는 방법을 찾고 그 비용을 정답으로 출력하는 프로그램을 작성하라.
 
 #include <cstdio>
+#include <cstring>
 #include <algorithm>
 
 using namespace std;
 
 int T, day, month, three, year;
 int pan[12];
+int cache[12];
 
-int solve(int whatkind, int m){	// (whatkinf : 0(day) / 1(month) / 2(3 months) / 3(year))
-	int ret = 0x7fffffff;
+int solve(int idx){
 
-	if(m>= 12)	return 0;
+	if(idx >= 12)	return 0;
 	
-	int cost;
+	int &ret = cache[idx];
+	if(ret != -1)	return ret;
 	
-	// day
-	if(whatkind == 0){
-		cost = pan[m] * day;
-//		printf("DAY_COOST : %d\n", cost);
-		
-		for(int i = 0 ; i < 4 ; ++i)	ret = min(ret, solve(i, m+1) + cost);		
-	}
+	ret = 0x7fffffff;
 	
-	// month
-	if(whatkind == 1){
-		if(pan[m] < 0)	cost = 0;
-		else	cost = month;
-//		printf("MONTH_COOST : %d\n", cost);
-		
-		for(int i = 0 ; i < 4 ; ++i)	ret = min(ret, solve(i, m+1) + cost);	
-	}
+	int cnt;
+	// 1일 이용권(안사는거 포함)
+	cnt = pan[idx] * day;
+	ret = min(ret, solve(idx + 1) + cnt);
 	
-	// 3 months
-	if(whatkind == 2){
-		cost = three;
-//		printf("33MONTH_COOST : %d\n", cost);
-		for(int i = 0 ; i < 4 ; ++i)	ret = min(ret, solve(i, m+3) + cost);	
-	}	
+	// 1달 사용권
+	ret = min(ret, solve(idx + 1) + month); 
 	
-	// year
-	if(whatkind == 3){
-		cost = year;
-//		printf("YEAR_COOST : %d\n", cost);
-		
-		for(int i = 0 ; i < 4 ; ++i)	ret = min(ret, solve(i, m+12) + cost);	
-	}	
-
-	return ret;	
+	// 3달 사용권
+	ret = min(ret, solve(idx + 3) + three);
+	
+	// 1년 사용권 
+	ret = min(ret, solve(idx + 12) + year);
+	
+	return ret;
 }
 
 
@@ -55,17 +41,11 @@ int main(){
 	scanf("%d", &T);
 	
 	for(int z = 1 ; z <= T ; ++z){
-		
+		memset(cache, -1, sizeof(cache));
 		scanf("%d %d %d %d", &day, &month, &three, &year);	
 		for(int i = 0 ; i < 12 ; ++i)	scanf("%d", &pan[i]);
 		
-		int ans = 0x7fffffff;
-		
-		for(int i = 0 ; i < 4 ; ++i){
-			ans = min(ans, solve(i, 0));
-		}
-		
-		printf("#%d %d\n", z, ans);
+		printf("#%d %d\n", z, solve(0));
 	}
 	
 	return 0;
