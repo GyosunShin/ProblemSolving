@@ -32,7 +32,6 @@ void solve(){	// For) 오름차순
 		for(int i = bIdx ; i < M ; ++i)	ans[idx++] = panB[i];
 	}
 	
-	
 }
 
 int main(){
