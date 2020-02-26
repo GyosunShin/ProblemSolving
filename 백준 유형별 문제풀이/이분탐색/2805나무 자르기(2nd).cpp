@@ -7,7 +7,7 @@
 
 int N, M;
 long long map[1000000];
-long long small = 0;
+long long small = 1;
 long long big = (-1 * 0x7fffffff);
 
 int main(){
@@ -19,12 +19,14 @@ int main(){
 	}
 	
 	while(small <= big){
+		printf("%d   %d\n", small, big);
 		long long mid = (small + big) / 2;
 		
 		long long tmp_sum = 0;
 		for(int i = 0 ; i < N ; ++i){
 			if(map[i] > mid)	tmp_sum += (map[i] - mid);
 		}
+		printf("<%d>\n", tmp_sum);
 		if(tmp_sum >= M){
 			small = mid + 1;
 		}
