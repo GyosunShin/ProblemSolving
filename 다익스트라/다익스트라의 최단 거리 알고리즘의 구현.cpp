@@ -17,6 +17,7 @@ vector<int> dijkstra(int src){
 		
 		// 만약 지금 꺼낸 것보다 더 짧은 경로를 알고 있다면 지금 꺼낸 것을 무시한다.
 		if(dist[here] < cost)	continue;
+		
 		// 인접한 정점들을 모두 검사한다.
 		for(int i = 0 ; i < adj[here].size() ; ++i) {
 			int there = adj[here][i].first;

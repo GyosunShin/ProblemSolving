@@ -6,6 +6,7 @@ using namespace std;
 struct INFO{
 	int r, c, power, left;
 };
+
 struct cmp{
     bool operator()(const INFO &a, const INFO &b){
     	

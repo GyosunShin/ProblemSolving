@@ -65,7 +65,7 @@ int solution(int N, vector<vector<int> > road, int K) {
     q.push(start);
     visited[start.node] = 0;
     ++ans;
-    bfs();	
+    bfs();
     
     return ans;
 }

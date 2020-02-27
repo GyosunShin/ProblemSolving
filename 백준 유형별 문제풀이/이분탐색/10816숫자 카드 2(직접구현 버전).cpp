@@ -10,13 +10,11 @@ int Npan[500000];
 int Mpan[500000];
 
 int up(int target){
-	
 	int left = 0;
 	int right = N-1;
 	int mid;
 	
 	while(left <= right){
-		
 		mid = (left + right) / 2;
 		
 		if(Npan[mid] > target){
@@ -25,11 +23,8 @@ int up(int target){
 		else{
 			left = mid + 1;
 		}
-		
 	}
-	
 	return left;
-	
 }
 
 int low(int target){
@@ -39,7 +34,6 @@ int low(int target){
 	int mid;
 	
 	while(left <= right){
-		
 		mid = (left + right) / 2;
 		
 		if(Npan[mid] >= target){
@@ -47,12 +41,10 @@ int low(int target){
 		}
 		else{
 			left = mid + 1;
-		}
-		
+		}	
 	}
 	
 	return left;
-	
 }
 
 int solve(int target){
