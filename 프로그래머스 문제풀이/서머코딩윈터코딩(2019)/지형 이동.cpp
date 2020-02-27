@@ -15,7 +15,7 @@ using namespace std;
 struct DisjointSet{
 	vector<int> parent, rank;
 	DisjointSet(int n) : parent(n+1), rank(n+1, 1){
-		for(int i = 0 ; i <= n ; ++i){
+		for(int i = 1 ; i <= n ; ++i){
 			parent[i] = i;
 		}	
 	}
