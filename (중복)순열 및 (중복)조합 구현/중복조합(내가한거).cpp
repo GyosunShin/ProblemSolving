@@ -29,12 +29,12 @@ void dfs(int start){
 }
 
 int main(){
+	printf("TES\n");
 	map[0] = 1;
 	map[1] = 2;
 	map[2] = 3;
 	map[3] = 4;
 	map[4] = 5;
-	
 	
 	dfs(0);
 	
