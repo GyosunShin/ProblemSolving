@@ -44,10 +44,15 @@ int main(){
 		queue<TREE> life_tree;
 		queue<TREE> dead_tree;
 		
+		printf("봄 전) SIZE : %d\n", pq[cur].size());
+		int ttmp_cnt = 0;
 		while(!pq[cur].empty()){
 			TREE cur_tree = pq[cur].top();	pq[cur].pop();
+			printf("빼기 (%d, %d) %d\n", 
+			cur_tree.y, cur_tree.x, cur_tree.age);			
 			
 			if(map[cur_tree.y][cur_tree.x] >= cur_tree.age){   // "봄" : 어린 나무의 나이보다 적게 있으면 죽여 
+				ttmp_cnt++;
 				map[cur_tree.y][cur_tree.x] -= cur_tree.age;
 				TREE next_tree;
 				next_tree.y = cur_tree.y;
@@ -61,16 +66,29 @@ int main(){
 				dead_tree.push(cur_tree);
 			}
 		}
+		printf("살아남은 수 : %d\n", ttmp_cnt);
+		
+		printf("봄끝나고 PAN현황\n");
+		for(int y = 0 ; y < n ; ++y){   
+			for(int x = 0 ; x < n ; ++x){
+				printf("%d ", map[y][x]);
+			}
+			printf("\n");
+		}
+		printf("\n");		
 		
 		while(!dead_tree.empty()){   // "여름" 해당 케이스 : 죽은 나무 나이의 1/2에 해당하는 양분을 뒈진 자리에 ++..... 
 			TREE cur_tree = dead_tree.front();	dead_tree.pop();
 			map[cur_tree.y][cur_tree.x] += cur_tree.age / 2;
 		}
 		
+		int tmp_cnt = 0;
+		
 		while(!life_tree.empty()){  // "가을" : 번식 --> 나이가 5의 배수인 나무인 경우 주변 8자리에 나이 1인 나무 심어주자! 
 			TREE cur_tree = life_tree.front();	
 			life_tree.pop();
 			if(cur_tree.age % 5 == 0){  // 번식가능한 나무 
+				tmp_cnt++;
 				for(int dir = 0 ; dir < 8 ; ++dir){
 					TREE next_tree;
 					next_tree.y = cur_tree.y + dy[dir];
@@ -86,6 +104,7 @@ int main(){
 				}
 			}
 		}
+		printf("번식놈수 : %d\n", tmp_cnt);
 		
 		for(int y = 0 ; y < n ; ++y){   // "겨울" : 걍 각 땅덩어리에 양분 더해주셈! 
 			for(int x = 0 ; x < n ; ++x){
@@ -94,11 +113,24 @@ int main(){
 		}
 		
 		cur = next;
+		printf("[%d년 후] %d\n", i+1, pq[cur].size());
+		
+//		for(int z = 0 ; z < pq[cur].size() ; ++z){
+//			printf("(%d / %d) : %d\n");
+//		}
+		
+		for(int y = 0 ; y < n ; ++y){   
+			for(int x = 0 ; x < n ; ++x){
+				printf("%d ", map[y][x]);
+			}
+			printf("\n");
+		}
+		printf("\n");
 		
 	}  // The End of k년 지난 후! 
 	
 	
-	printf("%d\n", pq[next].size());
+	printf("%d\n", pq[cur].size());
 	return 0;
 }
 	
