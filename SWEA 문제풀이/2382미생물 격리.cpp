@@ -58,7 +58,7 @@ int main(){
 				}
 				else{	// 이미 다른 군집이 위치해 있을 경우 
 					int idx = map[tmp.r][tmp.c][1];
-					if(map[tmp.r][tmp.c][0] < tmp.num){ // 새로들어올 놈이 더 큰 경우  
+					if(map[tmp.r][tmp.c][0] < tmp.num){ // 새로들어올 놈(tmp)이 더 큰 경우  
 						map[tmp.r][tmp.c][0] = tmp.num;
 						infos[idx].dir = tmp.dir;
 					}
