@@ -11,7 +11,7 @@
 #include <algorithm>
 
 using namespace std;
-¤¡ 
+
 struct INFO{
 	int r, c, power, left;
 };
