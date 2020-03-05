@@ -72,7 +72,6 @@ int main(){
 			for(int j = 1 ; j < N-1 ; ++j){
 				global_r = i;	global_c = j;
 				cache[pan[i][j]] = true;
-//				printf("G_R: %d / G_C : %d\n", i, j);
 				dfs(i, j, 0, 0);
 				cache[pan[i][j]] = false;
 			}
