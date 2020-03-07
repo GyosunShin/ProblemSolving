@@ -25,7 +25,6 @@ vector<int> picked;
 
 int peoples, stairs;
 
-// 오름차순 (작은거 부터 top() pop()) 
 vector<int> pq[2];
 
 int mmin = 0x7fffffff;
