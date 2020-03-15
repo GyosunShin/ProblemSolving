@@ -31,6 +31,7 @@ int bfs(){
 	while(!q.empty()){
 		INFO cur = q.front();	q.pop();
 //		cout << cur.len << "[] " << cur.map << endl;
+//		cout << "CUR : " << cur.map << " / QSIZE : " << q.size() << endl;
 		
 		if(cur.map == "123456780"){
 		 	return cur.len;

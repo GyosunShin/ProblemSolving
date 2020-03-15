@@ -10,6 +10,7 @@ struct INFO{
 struct cmp{
     bool operator()(const INFO &a, const INFO &b){
     	
+    	// 이렇게 하면 작은거 부터 나온다 --> sort()함수와 반대다 
     	if(a.power == b.power)	return a.left > b.left;
     	else	return a.power > b.power;
     	

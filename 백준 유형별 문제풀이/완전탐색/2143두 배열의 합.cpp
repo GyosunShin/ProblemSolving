@@ -30,7 +30,6 @@ void ndfs(int start){
 	int tmp_sum = 0;
 	for(int i = start ; i < n ; ++i){
 		tmp_sum += nmap[i];
-//		printf("[N] TMP_SUM : %d\n",tmp_sum);
 		nsum.push_back(tmp_sum);
 	}
 }
@@ -39,7 +38,6 @@ void mdfs(int start){
 	int tmp_sum = 0;
 	for(int i = start ; i < m ; ++i){
 		tmp_sum += mmap[i];
-//		printf("[M] TMP_SUM : %d\n",tmp_sum);
 		msum.push_back(tmp_sum);
 	}	
 }

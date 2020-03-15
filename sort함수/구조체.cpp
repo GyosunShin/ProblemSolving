@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -7,7 +8,9 @@ struct Point{
 	int x,y;
 };
 
-bool compare(Point p1, Point p2){
+vector<Point> vs;
+
+bool compare(Point &p1, Point &p2){
 	if(p1.x == p2.x){
 		return p1.y > p2.y;
 	}
@@ -30,10 +33,10 @@ int main(){
 	Point p4;
 	p4.x = 4;	p4.y = 5;
 	
-	p[0] = p1;
-	p[1] = p2;
-	p[2] = p3;
-	p[3] = p4;
+	p[0] = p1;	vs.push_back(p1);
+	p[1] = p2;	vs.push_back(p2);
+	p[2] = p3;	vs.push_back(p3);
+	p[3] = p4;	vs.push_back(p4);
 	
 	for(int i = 0 ; i < 4 ; ++i){
 		printf("x : %d / y : %d\n", p[i].x, p[i].y);
@@ -44,6 +47,11 @@ int main(){
 	
 	for(int i = 0 ; i < 4 ; ++i){
 		printf("x : %d / y : %d\n", p[i].x, p[i].y);
+	}
+	
+	sort(vs.begin(), vs.end(), compare);
+	for(int i = 0 ; i < 4 ; ++i){
+		printf("x : %d / y : %d\n", vs[i].x, vs[i].y);
 	}
 	
 	return 0;
