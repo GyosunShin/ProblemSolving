@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://noirstar.tistory.com/16 -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/lightbox.min.css"><link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/font.css"><link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/content.css"><!--[if lt IE 9]><script src="https://t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script><![endif]--><!--[if gte IE 9]>
+<!--><script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/jquery-3.2.1.min.js.다운로드"></script><!--<![endif]-->
+<script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/lightbox-plus-jquery.min.js.다운로드"></script>
+<script>
+lightbox.options.fadeDuration = 200;
+lightbox.options.resizeDuration = 200;
+lightbox.options.wrapAround = false;
+lightbox.options.albumLabel = "%1 / %2";
+</script>
+<script>var tjQuery = jQuery.noConflict(true);</script><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="icon" href="https://tistory3.daumcdn.net/tistory/2607124/5876a06809474e598f00446931e25223"><link rel="apple-touch-icon" href="https://img1.daumcdn.net/thumb/C180x180/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24443D3359338CCE07">
+<link rel="apple-touch-icon" sizes="76x76" href="https://img1.daumcdn.net/thumb/C76x76/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24443D3359338CCE07">
+<link rel="apple-touch-icon" sizes="120x120" href="https://img1.daumcdn.net/thumb/C120x120/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24443D3359338CCE07">
+<link rel="apple-touch-icon" sizes="152x152" href="https://img1.daumcdn.net/thumb/C152x152/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F24443D3359338CCE07"><meta name="description" content="코드를 짜다보니 NULL , NUL, 0, \0 이것들의 차이점이 문득 궁금해졌습니다. 인터넷을 뒤져보니 이미 많은분들이 이것들의 차이점에 대해 적어 놓으셨더라구요. 헷갈릴 수있는 것들이기에 자세하게 정리해 보았습..">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="https://noirstar.tistory.com/16"><meta property="og:type" content="article"><meta property="og:url" content="https://noirstar.tistory.com/16"><meta property="og:site_name" content="NoirStar Space"><meta property="og:title" content="[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자."><meta name="by" content="NoirStar"><meta property="og:description" content="코드를 짜다보니 NULL , NUL, 0, \0 이것들의 차이점이 문득 궁금해졌습니다. 인터넷을 뒤져보니 이미 많은분들이 이것들의 차이점에 대해 적어 놓으셨더라구요. 헷갈릴 수있는 것들이기에 자세하게 정리해 보았습.."><meta property="og:image" content="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2576DC4A593BD7F415">
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자."><meta name="twitter:description" content="코드를 짜다보니 NULL , NUL, 0, \0 이것들의 차이점이 문득 궁금해졌습니다. 인터넷을 뒤져보니 이미 많은분들이 이것들의 차이점에 대해 적어 놓으셨더라구요. 헷갈릴 수있는 것들이기에 자세하게 정리해 보았습.."><meta property="twitter:image" content="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2576DC4A593BD7F415">
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="https://noirstar.tistory.com/16"><meta name="plink" content="https://noirstar.tistory.com/16"><meta name="title" content="[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자."><meta name="article:media_name" content="NoirStar Space"><meta property="article:mobile_url" content="https://noirstar.tistory.com/m/16"><meta property="article:pc_url" content="https://noirstar.tistory.com/16"><meta property="article:mobile_view_url" content="https://noirstar.tistory.com/m/16"><meta property="article:pc_view_url" content="https://noirstar.tistory.com/16"><meta property="article:talk_channel_view_url" content="https://noirstar.tistory.com/m/16"><meta property="article:pc_service_home" content="https://www.tistory.com"><meta property="article:mobile_service_home" content="https://www.tistory.com/m"><meta property="article:txid" content="2607124_16"><meta property="article:published_time" content="2017-06-10T20:53:09+09:00"><meta property="og:regDate" content="20170610205309"><meta property="article:modified_time" content="2019-04-02T17:55:19+09:00">
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":{"@id":"https:\/\/noirstar.tistory.com\/16"},"url":"https:\/\/noirstar.tistory.com\/16","headline":"[C\/C++]NULL, NUL, 0, \\0  \uc758 \ucc28\uc774\uc810\uc744 \uc54c\uc544\ubcf4\uc790.","description":"\ucf54\ub4dc\ub97c \uc9dc\ub2e4\ubcf4\ub2c8 NULL , NUL, 0, \\0 \uc774\uac83\ub4e4\uc758 \ucc28\uc774\uc810\uc774 \ubb38\ub4dd \uad81\uae08\ud574\uc84c\uc2b5\ub2c8\ub2e4. \uc778\ud130\ub137\uc744 \ub4a4\uc838\ubcf4\ub2c8 \uc774\ubbf8 \ub9ce\uc740\ubd84\ub4e4\uc774 \uc774\uac83\ub4e4\uc758 \ucc28\uc774\uc810\uc5d0 \ub300\ud574 \uc801\uc5b4 \ub193\uc73c\uc168\ub354\ub77c\uad6c\uc694. \ud5f7\uac08\ub9b4 \uc218\uc788\ub294 \uac83\ub4e4\uc774\uae30\uc5d0 \uc790\uc138\ud558\uac8c \uc815\ub9ac\ud574 \ubcf4\uc558\uc2b5..","author":{"@type":"Person","name":"NoirStar"},"image":{"@type":"ImageObject","url":"https:\/\/img1.daumcdn.net\/thumb\/R800x0\/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2576DC4A593BD7F415","width":"800px","height":"800px"},"datePublished":"20170610T20:53:09+09:00","dateModified":"20190402T17:55:19+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/tistory_admin\/static\/images\/openGraph\/opengraph.png","width":"800px","height":"800px"}}}</script>
+<!-- END STRUCTURED_DATA -->
+
+
+	
+	<meta name="naver-site-verification" content="b9b3559b1d6cf200299ba377da5505ceaac15ffa">
+	<script type="text/javascript"> 
+			var add = location.href; 
+			if(add == "https://noirstar.tistory.com/"){ 
+				location.href="https://noirstar.tistory.com/notice/5"; 
+			} 
+	</script>
+	<script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/jquery.min.js.다운로드"></script>
+	
+    
+	<meta name="naver-site-verification" content="77771e89f63bb04992984c5343be9ffa8d8c2840">
+	<meta name="google-site-verification" content="w1dCPOGxUcdwzbPmaKrKOePJmpNKLowoMjaLXEihSsU">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,width=device-width,target-densitydpi=medium-dpi">
+    <title>[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자.</title>
+    <link rel="alternate" type="application/rss+xml" title="NoirStar Space" href="https://noirstar.tistory.com/rss">
+
+    <link rel="stylesheet" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/style.css">
+    <link rel="stylesheet" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/font(1).css">
+		<link rel="stylesheet" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/jquery.min.js(1).다운로드"></script>
+    <!--<![endif]-->
+		<script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/ace.js.다운로드"></script><style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style>
+
+<style type="text/css">
+		#daumSearchBox {
+			height: 21px;
+			background-image : url(//i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bg_search2_2.gif);
+			margin: 5px auto ;
+			padding: 0;
+		}
+		#daumSearchBox input {
+			background: none;
+			margin : 0;
+			padding : 0;
+			border : 0;
+		}
+		#daumSearchBox #daumLogo {
+			width: 34px;
+			height: 21px;
+			float: left;
+			margin-right: 5px;
+			background-image : url(//i1.daumcdn.net/img-media/tistory/img/bg_search1_2_2010ci.gif);
+		}
+		#daumSearchBox #show_q {
+			background-color: transparent;
+			border: none;
+			font: 12px Gulim, Sans-serif;
+			color: #555;
+			margin-top: 4px;
+			margin-right: 15px;
+			float: left;
+		}
+
+		#daumSearchBox #show_btn {
+			background-image : url(//i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bt_search_2.gif);
+			width: 37px;
+			height: 21px;
+			float: left;
+			margin:0;
+			cursor:pointer;
+			text-indent:-1000em;
+		}
+	</style>
+<link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/style(1).css">
+<script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/profile.js.다운로드"></script>
+	<style type="text/css">
+		.another_category { border: 1px solid #E5E5E5; padding: 10px 10px 5px; margin:10px 0; clear: both; }
+		.another_category h4 { font-size: 12px !important; margin: 0 !important; border-bottom: 1px solid #E5E5E5 !important; padding: 2px 0 6px !important; }
+		.another_category h4 a { font-weight: bold !important; }
+		.another_category table { table-layout: fixed; border-collapse: collapse; width: 100% !important; margin-top: 10px !important; }
+		* html .another_category table { width: auto !important; }
+		*:first-child+html .another_category table { width: auto !important; }
+		.another_category th, .another_category td { padding: 0 0 4px !important; }
+		.another_category th { text-align: left; font-size: 12px !important; font-weight: normal;  word-break: break-all; overflow: hidden; line-height: 1.5; }
+		.another_category td { text-align: right; width: 80px; font-size: 11px; }
+		.another_category th a { font-weight: normal; text-decoration: none; border: none !important; }
+		.another_category th a.current{ font-weight: bold; text-decoration: none !important; border-bottom: 1px solid !important; }
+		.another_category th span { font-weight: normal; text-decoration: none; font: 10px Tahoma, Sans-serif; border: none !important; }
+
+		.another_category_color_gray, .another_category_color_gray h4 { border-color: #E5E5E5 !important; }
+		.another_category_color_gray * { color: #909090 !important; }
+		.another_category_color_gray th a.current{border-color:#909090 !important;}
+		.another_category_color_gray h4, .another_category_color_gray h4 a { color: #737373 !important; }
+
+
+		.another_category_color_red, .another_category_color_red h4 { border-color: #F6D4D3 !important;  }
+		.another_category_color_red * { color: #E86869 !important; }
+		.another_category_color_red th a.current{border-color:#E86869 !important;}
+		.another_category_color_red h4, .another_category_color_red h4 a { color: #ED0908 !important; }
+
+
+		.another_category_color_green, .another_category_color_green h4 { border-color: #CCE7C8 !important; }
+		.another_category_color_green * { color: #64C05B !important; }
+		.another_category_color_green th a.current{border-color:#64C05B !important;}
+		.another_category_color_green h4, .another_category_color_green h4 a { color: #3EA731 !important; }
+
+
+		.another_category_color_blue, .another_category_color_blue h4 { border-color: #C8DAF2 !important; }
+		.another_category_color_blue * { color: #477FD6 !important; }
+		.another_category_color_blue th a.current{border-color:#477FD6 !important;}
+		.another_category_color_blue h4, .another_category_color_blue h4 a { color: #1960CA !important; }
+
+
+		.another_category_color_violet, .another_category_color_violet h4 { border-color: #E1CEEC !important;  }
+		.another_category_color_violet * { color:#9D64C5 !important; }
+		.another_category_color_violet th a.current{border-color:#9D64C5 !important;}
+		.another_category_color_violet h4, .another_category_color_violet h4 a { color: #7E2CB5 !important; }
+	</style>
+<script type="text/javascript">
+        
+        window.TistoryBlog = {
+            basePath: "",
+            url: "https://noirstar.tistory.com",
+            tistoryUrl: "https://noirstar.tistory.com",
+			manageUrl: 'https://noirstar.tistory.com/manage',
+            token: 'df8ecMUm92Ka42b/aD5UOg=='
+        };
+        var servicePath = "";
+        var blogURL = "";
+    </script>
+
+	<script> (function() { window.orgjQuery = window.jQuery; window.jQuery = tjQuery })()</script>
+    <script type="text/javascript" defer="" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/reaction-button-container.min.js.다운로드"></script>
+    <script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/uoclike.min.js.다운로드"></script>
+	<script> (function() { window.jQuery = window.orgjQuery; delete window.orgjQuery })()</script>
+    <script>
+		(function($) {
+			$.fn.extend({
+				size: function () {
+					return this.length
+				}
+			});
+			$.fn.UOCLike.defaults.updateServiceCategory = true;
+					})(tjQuery)
+    </script>
+        <script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/base.js.다운로드"></script>
+        <link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/dialog.css">
+            <link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/font(2).css">
+    <link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/postBtn.css">
+        <link rel="stylesheet" type="text/css" href="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/tistory.css">
+        <script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/kakao.min.js.다운로드"></script><style type="text/css">#DragSchLayer{display:block;position:absolute;z-index:1000;width:61px;height:31px;margin:-30px 0px 0px -5px;background:url(//search1.daumcdn.net/search/statics/common/pi/btn_drag_rect.png);cursor:pointer}             @media             only screen and (-webkit-min-device-pixel-ratio: 1.5),             only screen and (min-device-pixel-ratio: 1.5),             only screen and (min-resolution: 1.5dppx) {             #DragSchLayer{background-image:url(//search1.daumcdn.net/search/statics/common/pi/r2/btn_drag_rect.png);background-size:61px 31px}}            </style><script type="text/javascript" async="" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/td.min.js.다운로드"></script><script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/theme-monokai.js.다운로드"></script><script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/mode-c_cpp.js.다운로드"></script><style id="ace-monokai">.ace-monokai .ace_gutter {background: #2F3129;color: #8F908A}.ace-monokai .ace_print-margin {width: 1px;background: #555651}.ace-monokai {background-color: #272822;color: #F8F8F2}.ace-monokai .ace_cursor {color: #F8F8F0}.ace-monokai .ace_marker-layer .ace_selection {background: #49483E}.ace-monokai.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px #272822;}.ace-monokai .ace_marker-layer .ace_step {background: rgb(102, 82, 0)}.ace-monokai .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid #49483E}.ace-monokai .ace_marker-layer .ace_active-line {background: #202020}.ace-monokai .ace_gutter-active-line {background-color: #272727}.ace-monokai .ace_marker-layer .ace_selected-word {border: 1px solid #49483E}.ace-monokai .ace_invisible {color: #52524d}.ace-monokai .ace_entity.ace_name.ace_tag,.ace-monokai .ace_keyword,.ace-monokai .ace_meta.ace_tag,.ace-monokai .ace_storage {color: #F92672}.ace-monokai .ace_punctuation,.ace-monokai .ace_punctuation.ace_tag {color: #fff}.ace-monokai .ace_constant.ace_character,.ace-monokai .ace_constant.ace_language,.ace-monokai .ace_constant.ace_numeric,.ace-monokai .ace_constant.ace_other {color: #AE81FF}.ace-monokai .ace_invalid {color: #F8F8F0;background-color: #F92672}.ace-monokai .ace_invalid.ace_deprecated {color: #F8F8F0;background-color: #AE81FF}.ace-monokai .ace_support.ace_constant,.ace-monokai .ace_support.ace_function {color: #66D9EF}.ace-monokai .ace_fold {background-color: #A6E22E;border-color: #F8F8F2}.ace-monokai .ace_storage.ace_type,.ace-monokai .ace_support.ace_class,.ace-monokai .ace_support.ace_type {font-style: italic;color: #66D9EF}.ace-monokai .ace_entity.ace_name.ace_function,.ace-monokai .ace_entity.ace_other,.ace-monokai .ace_entity.ace_other.ace_attribute-name,.ace-monokai .ace_variable {color: #A6E22E}.ace-monokai .ace_variable.ace_parameter {font-style: italic;color: #FD971F}.ace-monokai .ace_string {color: #E6DB74}.ace-monokai .ace_comment {color: #75715E}.ace-monokai .ace_indent-guide {background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWPQ0FD0ZXBzd/wPAAjVAoxeSgNeAAAAAElFTkSuQmCC) right repeat-y}
+/*# sourceURL=ace/css/ace-monokai */</style></head>
+
+<body id="tt-body-page">
+<script type="text/javascript">
+	(function() {
+		if (!window.T) {
+			window.T = {}
+		}
+		window.T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/17","NEXT_PAGE":"\/15","BLOG":{"isDormancy":false,"title":"NoirStar Space"},"NEED_COMMENT_LOGIN":false,"COMMENT_LOGIN_CONFIRM_MESSAGE":"","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=http%3A%2F%2Fnoirstar.tistory.com%2F16","DEFAULT_URL":"https:\/\/noirstar.tistory.com","USER":{"name":null,"homepage":null},"ROLE_GROUP":"visitor","SUBSCRIPTION":{"status":"none","isConnected":false,"isProcessing":false,"isPending":false,"isWait":false,"isNone":true},"IS_LOGIN":false,"HAS_BLOG":false,"TOP_URL":"http:\/\/www.tistory.com"};
+		window.appInfo = {"domain":"tistory.com","topUrl":"https:\/\/www.tistory.com","loginUrl":"https:\/\/www.tistory.com\/auth\/login","logoutUrl":"https:\/\/www.tistory.com\/auth\/logout"};
+
+        window.initData = {};
+        
+	})();
+</script>
+
+<script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/common.js.다운로드"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+
+<div id="dkIndex">
+    <!--웹접근성용 바로가기 링크 모음-->
+    <a href="https://noirstar.tistory.com/16#dkBody">본문 바로가기</a>
+</div>
+<div id="dkWrap" class="wrap_skin">
+    <!-- 카테고리버튼 클릭시 'navi_on' 클래스 부여 -->
+    <div id="dkHead" role="banner" class="area_head">
+        <h1 class="screen_out">NoirStar Space</h1>
+        <button type="button" class="btn_cate">
+            <span class="ico_skin ico_cate">카테고리</span>
+        </button>
+        <div class="area_search ">
+            <button type="button" class="btn_search">
+                <span class="ico_skin ico_search">검색하기</span>
+            </button>
+            
+                <form action="https://noirstar.tistory.com/16#" method="get" class="frm_search box_search" onsubmit="try{window.location.href=&#39;/search/&#39;+looseURIEncode(document.getElementsByName(&#39;search&#39;)[0].value);document.getElementsByName(&#39;search&#39;)[0].value=&#39;&#39;;return false;}catch(e){}">
+                    <fieldset>
+                        <legend class="screen_out">검색하기</legend>
+                        <label for="search" class="lab_search screen_out">Search</label>
+                        <input type="text" name="search" id="search" class="tf_search" placeholder="Search" value="" data-value="">
+                        <span class="ico_skin ico_search"></span>
+                    </fieldset>
+                </form>
+            
+        </div>
+        <div class="area_profile">
+					
+					
+					
+            <div class="tit_post">
+							<a href="https://noirstar.tistory.com/" class="link_post">NoirStar Space</a>
+               <a class="logo" href="http://noirstar.tistory.com/"><img src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/trade.png" width="240" height="90"></a>
+            </div>
+            <span class="thumb_profile">
+                <img src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/24443D3359338CCE07" class="img_profile" alt="프로필사진">
+            </span>
+					<span class="txt_profile"><i class="fa fa-quote-left" aria-hidden="true"></i> &nbsp;&nbsp;Must be modesty&nbsp;&nbsp; <i class="fa fa-quote-right" aria-hidden="true"></i></span>
+					<!--<br id="abc">-->
+					
+
+						
+					
+					
+					
+					<!--<br id="abc"><br id="abc">-->
+					
+				<br>
+					<div id="visit3">
+					<a id="visit3" href="http://noirstar.tistory.com/toolbar/popup/link" onclick="window.open(this.href, &#39;&#39;, &#39;width=300, height=220&#39;); return false;"><i class="fa fa-hand-peace-o"> 친구하기&nbsp;&nbsp;</i>
+						</a><a id="visit3" href="http://noirstar.tistory.com/guestbook"><i class="fa fa-paper-plane"> 방명록 &nbsp;&nbsp;</i></a>
+					 <a id="visit3" href="http://noirstar.tistory.com/category"> <i class="fa fa-pencil-square-o"> 모든글</i></a>
+					</div>
+						
+						<!--<br id="abc"><br id="abc"><br id="abc"><br id="abc"><br id="abc">-->
+						
+						<div id="visit">
+							<i class="fa fa-battery-quarter" aria-hidden="true"> Today :&nbsp;</i><a id="visit2">90</a>&nbsp; &nbsp;&nbsp;&nbsp;<i class="fa fa-bolt" aria-hidden="true" style="color:yellow"></i>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-battery-three-quarters" aria-hidden="true"> Total : </i> 93,205		   </div>
+						
+						
+						<!--<br id="abc">-->
+						
+						<div id="visit4" style="text-align:center">
+							<div style="float:center"><span id="linuxg" style="margin-right:3px">root@kali</span>:<span id="linuxb">~</span>#<a href="http://noirstar.tistory.com/notice/5" id="visit3">&nbsp;whoami&nbsp;</a><span>_</span></div>
+				
+					</div>
+				
+		
+					
+					
+					
+		
+        </div>
+					
+					
+					
+					
+    </div>
+    <hr class="hide">
+    <div id="dkContent" class="cont_skin" role="main">
+        <div id="cMain">
+            <div id="mFeature" class="wrap_sub">
+                <div class="cont_sub">
+                    <div class="inner_sub">
+                        <div class="area_sub">
+                            <div role="navigation" class="area_navi">
+                                <ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="https://noirstar.tistory.com/category">
+			Total							<span class="c_cnt">(321)</span>
+			
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/Language">
+						Language													<span class="c_cnt">(7)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Language/C%E3%85%A3C%2B%2B">
+									CㅣC++
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Language/Python">
+									Python
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/Security">
+						Security													<span class="c_cnt">(34)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Security/System%20Hacking">
+									System Hacking
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Security/Reverse%20Engineering">
+									Reverse Engineering
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Security/Web%20Hacking">
+									Web Hacking
+																			<span class="c_cnt">(8)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Security/Assembly">
+									Assembly
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Security/BugBounty%20Study">
+									BugBounty Study
+																			<span class="c_cnt">(15)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/OS">
+						OS													<span class="c_cnt">(0)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/OS/Linux">
+									Linux
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/Wargame%20%20%7C%20%20CTF">
+						Wargame  |  CTF													<span class="c_cnt">(96)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Wargame%20%20%7C%20%20CTF/Reversing">
+									Reversing
+																			<span class="c_cnt">(36)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Wargame%20%20%7C%20%20CTF/Pwnable">
+									Pwnable
+																			<span class="c_cnt">(0)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Wargame%20%20%7C%20%20CTF/WebHacking">
+									WebHacking
+																			<span class="c_cnt">(56)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://noirstar.tistory.com/category/Wargame%20%20%7C%20%20CTF/CTF%20WriteUp">
+									CTF WriteUp
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/Daily%20IT%20News">
+						Daily IT News													<span class="c_cnt">(161)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/%EC%9D%B4%EA%B2%83%EC%A0%80%EA%B2%83..">
+						이것저것..													<span class="c_cnt">(17)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/%EC%93%B0%EB%A0%88%EA%B8%B0%ED%86%B5">
+						쓰레기통													<span class="c_cnt">(4)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://noirstar.tistory.com/category/%ED%8B%B0%EB%81%8C">
+						티끌													<span class="c_cnt">(1)</span>
+						
+											</a>
+
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+                                <a href="https://noirstar.tistory.com/guestbook" class="link_guestbook">Guestbook</a>
+                            </div>
+                            <div class="wrap_etc">
+                                <div class="col_aside right_side">
+                                
+                                        <!-- 공지사항 -->
+                                        
+                                            <div class="box_aside">
+                                                <strong class="tit_aside">Notice</strong>
+                                                <ul class="list_board">
+                                                    
+                                                    <li><a href="https://noirstar.tistory.com/notice/5" class="link_board">NOIRSTAR TISTORY</a></li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        
+                                    
+                                        <!-- 최근에 올라온 글 -->
+                                    <div class="box_aside">
+                                        <strong class="tit_aside">Recent Posts</strong>
+                                        <ul class="list_board">
+                                            
+                                            <li><a href="https://noirstar.tistory.com/347" class="link_board">a</a></li>
+                                            
+
+                                            <li><a href="https://noirstar.tistory.com/345" class="link_board">버그바운티(Bug Bounty) Wr..</a></li>
+                                            
+
+                                            <li><a href="https://noirstar.tistory.com/341" class="link_board">[책] 착하게, 그러나 단호..</a></li>
+                                            
+
+                                            <li><a href="https://noirstar.tistory.com/340" class="link_board">공유</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    
+                                        <!-- 최근에 달린 댓글 -->
+                                    <div class="box_aside">
+                                        <strong class="tit_aside">Recent Comments</strong>
+                                        <ul class="list_board">
+                                            
+                                            <li><a href="https://noirstar.tistory.com/322#comment13282054" class="link_board">해당 보고서는 다른 페이지에..</a></li>
+                                            
+
+                                            <li><a href="https://noirstar.tistory.com/336#comment13202898" class="link_board">Payload 좀 부탁드릴게요. 리..</a></li>
+                                            
+
+                                            <li><a href="https://noirstar.tistory.com/336#comment13200836" class="link_board">페이로드는 드릴수 없을 것 같..</a></li>
+                                            
+
+                                            <li><a href="https://noirstar.tistory.com/336#comment13200637" class="link_board">Payload 좀 부탁드려도될가요?..</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    
+                                        <!-- 링크 -->
+                                    <div class="box_aside">
+                                        <strong class="tit_aside">Friends</strong>
+                                        <ul class="list_board">
+                                            
+                                            <li><a href="http://hackernextdoor.club/" class="link_board" target="_blank">JayCho ^^/</a></li>
+                                            
+
+                                            <li><a href="https://kyumoonhan.tistory.com/" class="link_board" target="_blank">Kyumoonhan</a></li>
+                                            
+
+                                            <li><a href="https://rjswn0315.tistory.com/" class="link_board" target="_blank">Security Lee</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    
+                               
+                                
+                                        <!-- 방문자수 -->
+                                    <div class="box_aside box_visitor">
+                                        <dl class="list_visitor">
+                                            <dt>Today</dt>
+                                            <dd>90</dd>
+                                        </dl>
+                                        <dl class="list_total">
+                                            <dt>Total</dt>
+                                            <dd>93,205</dd>
+                                        </dl>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="ico_skin btn_close">닫기</button>
+
+                    <strong class="screen_out">관리 메뉴</strong>
+                    <ul class="list_control">
+                        <li><a href="https://noirstar.tistory.com/manage/entry/post" class="ico_skin link_write" title="글쓰기">글쓰기</a></li>
+                        <li><a href="https://noirstar.tistory.com/guestbook" class="ico_skin link_memo" title="방명록">방명록</a></li>
+                        <li><a href="https://noirstar.tistory.com/rss" class="ico_skin link_rss" title="RSS">RSS</a></li>
+                        <li><a href="https://noirstar.tistory.com/manage" class="ico_skin link_manage" title="관리">관리</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="mArticle" class="article_skin">
+
+                
+
+                <div class="index_title">
+                    <h2 class="tit_skin"><span class="txt_title">NoirStar Space</span></h2>
+                </div>
+
+                
+                    
+
+
+                    
+                        <h2 id="dkBody" class="screen_out">[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자. 본문</h2>
+                        <div class="area_title">
+                            <strong class="tit_category"><a href="https://noirstar.tistory.com/category/Language/C%E3%85%A3C%2B%2B">Language/CㅣC++</a></strong>
+                            <h3 class="tit_post">[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자.</h3>
+                            <span class="info_post">NoirStar
+                                <span class="txt_bar"></span>2017. 6. 10. 20:53
+                                
+                            </span>
+                        </div>
+
+                        <div class="area_view">
+                            <p><span style="font-size: 14pt; font-family: &quot;맑은 고딕&quot;, sans-serif;"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;"><br></span></span></p><p><span style="font-size: 14pt; font-family: &quot;맑은 고딕&quot;, sans-serif;"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">코드를 짜다보니 NULL , NUL, 0, </span><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">\</span><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">0 이것들의 차이점이 문득 궁금해졌습니다.&nbsp;</span></span></p><p><span style="font-size: 14pt; font-family: &quot;맑은 고딕&quot;, sans-serif;">인터넷을 뒤져보니 이미 많은분들이 이것들의 차이점에 대해 적어 놓으셨더라구요. 헷갈릴 수있는 것들이기에 자세하게 정리해 보았습니다.</span><br></p><p><span style="font-size: 18.6667px;"><br></span></p><p><span style="font-size:24pt;"><b><span style="color: rgb(255, 187, 0); font-family: &quot;맑은 고딕&quot;, sans-serif;"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">NULL 혹은</span><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">&nbsp;0</span></span></b></span><br></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;">먼저 NULL 부터 알아보겠습니다. NULL은 헤더파일</span><span style="font-size: 18.6667px;"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">에 정의된 매크로로 </span><b><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">null pointer constant</span></b><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">입니다.&nbsp;&nbsp;컴파일러에 의해 (void*)0 으로 정의되어집니다.</span></span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;">일반적으로 C언어에서 stdio.h 파일, C++에서 iostream 헤더파일을 include 시에 사용할 수 있습니다. &nbsp;</span><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;">NULL은 0 주소를 의미하기 때문에 </span><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;"><b><span style="color: rgb(255, 0, 0);">포인터 변수를 초기화</span></b> 시에 사용합니다.&nbsp;</span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;">예를들어 ..</span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">char *ptr = NULL 과 char *ptr = 0 은&nbsp;</span><b><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">같은 의미</span></b><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">라 볼 수 있습니다.&nbsp;</span></span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">그러나 int a = NULL 과 int a = 0 의 의미는 </span><b><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">다릅</span></b><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">니다.</span></span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;">왜냐하면 전자의 경우, NULL의 의미는 a 변수에 주소값 0 을 넣는것이고 후자는 정수 0을 a변수에 넣는다는 뜻입니다.</span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;">결론적으로 NULL은 0이랑 의미가 거의 같습니다. 포인터를 초기화 시에 0은 0 주소라는 것을 알고 있다는 가정하에 쓰기 때문에 NULL과 0의 의미를 동일하게 보는것입니다. <b>정수형 변수를 초기화시에 NULL을 쓰는 일은 없으니까요.</b></span></p><p><span style="font-size: 18.6667px; font-family: &quot;맑은 고딕&quot;, sans-serif;"><br></span></p><p><span style="font-size: 18.6667px;">NULL - 0x00000000 or 0x00000000'00000000 (32 vs 64 bit) 로 표현됩니다.</span></p><p><span style="font-size: 18.6667px;"><br></span></p><p><b style="font-size: 32px;"><span style="color: rgb(255, 187, 0);"><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">NU</span><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">L 혹은 \</span><span style="font-family: &quot;맑은 고딕&quot;, sans-serif;">0</span></span></b></p><p><span style="font-family: &quot;맑은 고딕&quot;, sans-serif; font-size: 14pt;">먼저 아스키 코드 표를 봅시다. 바로 첫번째 자리에 NUL 이 보입니다.&nbsp;</span></p><p></p><p style="text-align: center; clear: none; float: none;"><span class="imageblock" style="display:inline-block;width:507px;;height:auto;max-width:100%"><img srcset="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=http%3A%2F%2Fcfile10.uf.tistory.com%2Fimage%2F2576DC4A593BD7F4153E81" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/2576DC4A593BD7F415" style="max-width:100%;height:auto" width="507" height="865" filename="아스키코드표.jpg" filemime="image/jpeg"></span></p><p style="text-align: left; clear: none; float: none;"><span style="font-size: 18.6667px;">문자열을 표현할때는 문자열의 끝을 의미하는 문자인 '\0' 이&nbsp;삽입됩니다.&nbsp;</span><span style="font-size: 18.6667px;">이 문자를 가리켜 널(null) 문자라하며 아스키코드값 0에 해당. symbol(name</span><span style="font-size: 18.6667px;">)은 NUL 입니다.</span><span style="font-size: 18.6667px;">&nbsp;</span><br></p><p style="text-align: left; clear: none; float: none;"><span style="font-size: 18.6667px;"><b><span style="color: rgb(255, 0, 0);">숫자 0과 구분해주기 위해 '\0'으로 사용합니다</span></b>.&nbsp;문자 0은 아스키 코드값 0x20 이죠 엄연히 0이랑 다릅니다.&nbsp;</span></p><p style="clear: none; float: none;"><span style="font-size: 18.6667px;">자동으로 초기화된 문자열&nbsp;다음에&nbsp;</span><span style="font-size: 18.6667px;">null문자(\0)가 삽입되는건 다들 아실겁니다. 신기한건&nbsp;프로그래머가 직접 넣어줄 수도 있습니다.&nbsp;</span></p><pre class="brush: c_cpp ace_editor ace-monokai ace_dark" style="height: 260px;"><textarea class="ace_text-input" wrap="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="opacity: 0; height: 20px; width: 7.69729px; left: 53px; top: 0px;"></textarea><div class="ace_gutter"><div class="ace_layer ace_gutter-layer ace_folding-enabled" style="margin-top: 0px; height: 300px; width: 49px;"><div class="ace_gutter-cell " style="height: 20px;">1</div><div class="ace_gutter-cell " style="height: 20px;">2</div><div class="ace_gutter-cell " style="height: 20px;">3</div><div class="ace_gutter-cell " style="height: 20px;">4<span class="ace_fold-widget ace_start ace_open" style="height: 20px;"></span></div><div class="ace_gutter-cell " style="height: 20px;">5</div><div class="ace_gutter-cell " style="height: 20px;">6</div><div class="ace_gutter-cell " style="height: 20px;">7</div><div class="ace_gutter-cell " style="height: 20px;">8</div><div class="ace_gutter-cell " style="height: 20px;">9</div><div class="ace_gutter-cell " style="height: 20px;">10</div><div class="ace_gutter-cell " style="height: 20px;">11</div><div class="ace_gutter-cell " style="height: 20px;">12</div><div class="ace_gutter-cell " style="height: 20px;">13</div></div><div class="ace_gutter-active-line" style="top: 0px; height: 20px;"></div></div><div class="ace_scroller" style="left: 49px; right: 0px; bottom: 0px;"><div class="ace_content" style="margin-top: 0px; width: 751px; height: 300px; margin-left: 0px;"><div class="ace_layer ace_print-margin-layer"><div class="ace_print-margin" style="left: 619.783px; visibility: hidden;"></div></div><div class="ace_layer ace_marker-layer"><div class="ace_active-line" style="height:20px;top:0px;left:0;right:0;"></div></div><div class="ace_layer ace_text-layer" style="padding: 0px 4px;"><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_keyword">#include</span><span class="ace_constant ace_other">&lt;stdio.h&gt;</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_storage ace_type">void</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_identifier">main</span><span class="ace_paren ace_lparen">(</span><span class="ace_paren ace_rparen">)</span><span class="ace_paren ace_lparen">{</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_tab">————</span><span class="ace_storage ace_type">char</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_identifier">str</span><span class="ace_paren ace_lparen">[</span><span class="ace_constant ace_numeric">6</span><span class="ace_paren ace_rparen">]</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_keyword ace_operator">=</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_string ace_start">"</span><span class="ace_string">Hello</span><span class="ace_constant ace_language ace_escape">\0</span><span class="ace_string ace_end">"</span><span class="ace_punctuation ace_operator">;</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_comment">//<span class="ace_invisible ace_invisible_space">·</span>strlen(str)<span class="ace_invisible ace_invisible_space">·</span>=<span class="ace_invisible ace_invisible_space">·</span>5,<span class="ace_invisible ace_invisible_space">·</span>sizeof(str)<span class="ace_invisible ace_invisible_space">·</span>=<span class="ace_invisible ace_invisible_space">·</span>6<span class="ace_invisible ace_invisible_space">·</span>(<span class="ace_cjk" style="width:15.394583740234374px">한</span><span class="ace_cjk" style="width:15.394583740234374px">개</span><span class="ace_cjk" style="width:15.394583740234374px">의</span><span class="ace_invisible ace_invisible_space">·</span>NUL)</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_tab">————</span><span class="ace_storage ace_type">char</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_identifier">str</span><span class="ace_paren ace_lparen">[</span><span class="ace_constant ace_numeric">7</span><span class="ace_paren ace_rparen">]</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_keyword ace_operator">=</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_string ace_start">"</span><span class="ace_string">Hello</span><span class="ace_constant ace_language ace_escape">\0</span><span class="ace_string ace_end">"</span><span class="ace_punctuation ace_operator">;</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_comment">//<span class="ace_invisible ace_invisible_space">·</span>strlen(str)<span class="ace_invisible ace_invisible_space">·</span>=<span class="ace_invisible ace_invisible_space">·</span>5,<span class="ace_invisible ace_invisible_space">·</span>sizeof(str)<span class="ace_invisible ace_invisible_space">·</span>=<span class="ace_invisible ace_invisible_space">·</span>7<span class="ace_invisible ace_invisible_space">·</span>(<span class="ace_cjk" style="width:15.394583740234374px">두</span><span class="ace_cjk" style="width:15.394583740234374px">개</span><span class="ace_cjk" style="width:15.394583740234374px">의</span><span class="ace_invisible ace_invisible_space">·</span>NUL)</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_tab">————</span><span class="ace_storage ace_type">char</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_identifier">str</span><span class="ace_paren ace_lparen">[</span><span class="ace_constant ace_numeric">5</span><span class="ace_paren ace_rparen">]</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_keyword ace_operator">=</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_string ace_start">"</span><span class="ace_string">Hello</span><span class="ace_constant ace_language ace_escape">\0</span><span class="ace_string ace_end">"</span><span class="ace_punctuation ace_operator">;</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_comment">//<span class="ace_invisible ace_invisible_space">·</span><span class="ace_cjk" style="width:15.394583740234374px">컴</span><span class="ace_cjk" style="width:15.394583740234374px">파</span><span class="ace_cjk" style="width:15.394583740234374px">일</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_cjk" style="width:15.394583740234374px">에</span><span class="ace_cjk" style="width:15.394583740234374px">러</span><span class="ace_invisible ace_invisible_space">·</span>(1)</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_tab">————</span><span class="ace_storage ace_type">char</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_identifier">str</span><span class="ace_paren ace_lparen">[</span><span class="ace_constant ace_numeric">6</span><span class="ace_paren ace_rparen">]</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_keyword ace_operator">=</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_string ace_start">"</span><span class="ace_string">Hello</span><span class="ace_constant ace_language ace_escape">\0</span><span class="ace_string ace_end">"</span><span class="ace_punctuation ace_operator">;</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_comment">//<span class="ace_invisible ace_invisible_space">·</span><span class="ace_cjk" style="width:15.394583740234374px">컴</span><span class="ace_cjk" style="width:15.394583740234374px">파</span><span class="ace_cjk" style="width:15.394583740234374px">일</span><span class="ace_invisible ace_invisible_space">·</span><span class="ace_cjk" style="width:15.394583740234374px">에</span><span class="ace_cjk" style="width:15.394583740234374px">러</span><span class="ace_invisible ace_invisible_space ace_invalid">·</span>(2)</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_paren ace_rparen">}</span><span class="ace_invisible ace_invisible_eol">¬</span></div><div class="ace_line" style="height:20px"><span class="ace_invisible ace_invisible_eol">¶</span></div></div><div class="ace_layer ace_marker-layer"></div><div class="ace_layer ace_cursor-layer ace_hidden-cursors"><div class="ace_cursor" style="left: 4px; top: 0px; width: 7.69729px; height: 20px;"></div></div></div></div><div class="ace_scrollbar ace_scrollbar-v" style="display: none; width: 22px; bottom: 0px;"><div class="ace_scrollbar-inner" style="width: 22px; height: 260px;"></div></div><div class="ace_scrollbar ace_scrollbar-h" style="display: none; height: 22px; left: 49px; right: 0px;"><div class="ace_scrollbar-inner" style="height: 22px; width: 800px;"></div></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: hidden;"><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font: inherit; overflow: visible;"></div><div style="height: auto; width: auto; top: 0px; left: 0px; visibility: hidden; position: absolute; white-space: pre; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; overflow: visible;">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div></div></pre><p><span style="font-size: 14pt;">이런식으로 추가가 가능합니다. 이런식의 프로그램은&nbsp;검색을 해보니 권장하지 않는 방법인듯합니다.</span></p><p><span style="font-size: 14pt;">(1) 번째 컴파일 에러인 경우에는 변수의 크기보다 값이 더 크기 때문에 컴파일 에러가 발생합니다. (2) 번째 경우에는 값의 크기와 변수공간의 크기는 같으나 컴파일러가 자동으로 넣어주는 '\0' 을 넣을 자리가 없어서 컴파일 에러가 발생합니다.</span><br></p><p><span style="font-size: 14pt; font-family: &quot;맑은 고딕&quot;, sans-serif;"><b>NUL - 0x00 or 0x0000 (ASCII vs 2byte unicode)</b></span></p><p><span style="font-size: 14pt; font-family: &quot;맑은 고딕&quot;, sans-serif;"><b>'\0' - 0x00&nbsp; '0' - 0x20 &nbsp;(ASCII)</b></span></p><p><br></p><p><span style="font-size: 14pt;">\0과 0에 해당하는 아스키코드 값을 보시면 이해가 빠르실겁니다.</span><br></p><p><br></p><div class="container_postbtn #post_button_group">
+    <div class="postbtn_like">
+        
+    <script>
+        window.ReactionButtonType = 'reaction';
+        window.ReactionApiUrl = '//noirstar.tistory.com/reaction';
+        window.ReactionReqBody = {
+            entryId: 16        }
+    </script>
+    <div class="wrap_btn" id="reaction-16"><button class="btn_post uoc-icon"><div class="uoc-icon"><span class="ico_postbtn ico_like">좋아요</span><span class="txt_like uoc-count">7</span></div></button></div>
+    <script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/reaction-button-container.min.js.다운로드"></script>
+        <div class="wrap_btn wrap_btn_share">
+    <button type="button" class="btn_post sns_btn btn_share" data-thumbnail-url="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&amp;fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2576DC4A593BD7F415" data-title="[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자." data-description="코드를 짜다보니 NULL , NUL, 0, \0 이것들의 차이점이 문득 궁금해졌습니다. 인터넷을 뒤져보니 이미 많은분들이 이것들의 차이점에 대해 적어 놓으셨더라구요. 헷갈릴 수있는 것들이기에 자세하게 정리해 보았습.." data-profile-image="https://t1.daumcdn.net/cfile/tistory/24443D3359338CCE07" data-profile-name="NoirStar" data-pc-url="https://noirstar.tistory.com/16" data-relative-pc-url="/16" data-blog-title="NoirStar Space">
+        <span class="ico_postbtn ico_share">공유하기</span>
+    </button>
+</div>
+                <div class="wrap_btn wrap_btn_etc" data-entry-id="16" data-entry-visibility="public" data-category-visibility="public">
+    <button type="button" class="btn_post btn_etc2"><span class="ico_postbtn ico_etc">글 요소</span></button>
+</div>
+    </div>
+    <button type="button" class="btn_menu_toolbar btn_subscription  #subscribe" data-blog-id="2607124" data-url="https://noirstar.tistory.com/16" data-device="web_pc">
+    <em class="txt_state">구독하기</em>
+    <strong class="txt_tool_id">NoirStar Space</strong>
+    <span class="img_common_tistory ico_check_type1"></span>
+</button>
+    <div class="postbtn_ccl" data-ccl-type="3">
+    <a href="https://creativecommons.org/licenses/by/4.0/deed.ko" target="_blank" class="link_ccl">
+        <span class="bundle_ccl">
+            <span class="ico_postbtn ico_ccl1">저작자표시</span>        </span>
+    </a>
+</div>
+    <!--
+<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <Work rdf:about="">
+        <license rdf:resource="http://creativecommons.org/licenses/by-fr/2.0/kr/" />
+    </Work>
+    <License rdf:about="http://creativecommons.org/licenses/by-fr/">
+        <permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+                <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+                    </License>
+</rdf:RDF>
+-->
+</div><div class="another_category another_category_color_gray">
+<h4>'<a href="https://noirstar.tistory.com/category/Language">Language</a>&nbsp;&gt;&nbsp;<a href="https://noirstar.tistory.com/category/Language/C%E3%85%A3C++">CㅣC++</a>' 카테고리의 다른 글</h4>
+<table>
+<tbody><tr>
+<th>
+<a href="https://noirstar.tistory.com/16?category=675366" class="current">[C/C++]NULL, NUL, 0, \0  의 차이점을 알아보자.</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.06.10</td>
+</tr>
+<tr>
+<th>
+<a href="https://noirstar.tistory.com/12?category=675366">[C/C++] 미리 컴파일된헤더(Precompiled Header)?  컴파일 시간을 줄여봅시다!</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.05.31</td>
+</tr>
+<tr>
+<th>
+<a href="https://noirstar.tistory.com/11?category=675366">[C/C++] main은 알겠는데..  wmain, _tmain 는 무엇일까요?</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.05.31</td>
+</tr>
+<tr>
+<th>
+<a href="https://noirstar.tistory.com/10?category=675366">[C/C++] 동적 메모리 할당 malloc(), calloc(), realloc(), free()</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.05.30</td>
+</tr>
+<tr>
+<th>
+<a href="https://noirstar.tistory.com/8?category=675366">[C/C++]공유메모리 함수 shmget(),shmat(),shmdt(),shmctl()</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2017.05.30</td>
+</tr>
+</tbody></table></div>
+                        </div>
+                        <div class="area_etc">
+                            
+
+                            <strong class="screen_out">공유하기 링크</strong>
+                            <ul class="list_share">
+                                <li><a href="https://noirstar.tistory.com/16#none" class="ico_skin link_fb" data-service="facebook">페이스북</a></li>
+                                <li><a href="https://noirstar.tistory.com/16#none" class="ico_skin link_ks" data-service="kakaostory">카카오스토리</a></li>
+                                <li><a href="https://noirstar.tistory.com/16#none" class="ico_skin link_tw" data-service="twitter">트위터</a></li>
+                            </ul>
+                        </div>
+
+                        
+                            <div class="area_related">
+                                <strong class="tit_related">'Language/CㅣC++' Related Articles</strong>
+                                <ul class="list_related">
+                                    
+                                        <li class="thumb_type">
+                                            <a href="https://noirstar.tistory.com/12?category=675366" class="link_related">
+                                                
+                                                    <span class="thumb_related">
+                                                        <img src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/saved_resource" class="img_related" alt="">
+                                                    </span>
+                                                
+                                                <span class="txt_related">[C/C++] 미리 컴파일된헤더(Precompiled Header)?  컴파일 시간을 줄여봅시다!</span>
+                                                <span class="date_related">2017.05.31</span>
+                                                <span class="frame_related"></span>
+                                            </a>
+                                        </li>
+                                    
+                                        <li class="text_type">
+                                            <a href="https://noirstar.tistory.com/11?category=675366" class="link_related">
+                                                
+                                                <span class="txt_related">[C/C++] main은 알겠는데..  wmain, _tmain 는 무엇일까요?</span>
+                                                <span class="date_related">2017.05.31</span>
+                                                <span class="frame_related"></span>
+                                            </a>
+                                        </li>
+                                    
+                                        <li class="thumb_type">
+                                            <a href="https://noirstar.tistory.com/10?category=675366" class="link_related">
+                                                
+                                                    <span class="thumb_related">
+                                                        <img src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/saved_resource(1)" class="img_related" alt="">
+                                                    </span>
+                                                
+                                                <span class="txt_related">[C/C++] 동적 메모리 할당 malloc(), calloc(), realloc(), free()</span>
+                                                <span class="date_related">2017.05.30</span>
+                                                <span class="frame_related"></span>
+                                            </a>
+                                        </li>
+                                    
+                                        <li class="text_type">
+                                            <a href="https://noirstar.tistory.com/8?category=675366" class="link_related">
+                                                
+                                                <span class="txt_related">[C/C++]공유메모리 함수 shmget(),shmat(),shmdt(),shmctl()</span>
+                                                <span class="date_related">2017.05.30</span>
+                                                <span class="frame_related"></span>
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                                <a href="https://noirstar.tistory.com/category/Language/C%E3%85%A3C%2B%2B" class="link_more">more</a>
+                            </div>
+                        
+
+                        <div class="area_reply">
+                            <strong class="tit_reply"><span id="commentCount16_0">0</span>  Comments</strong>
+                            <div id="entry16Comment">
+                                
+
+                                <form method="post" action="https://noirstar.tistory.com/comment/add/16" onsubmit="return false" style="margin: 0">
+                                    <fieldset class="fld_reply">
+                                        <legend class="screen_out">댓글쓰기 폼</legend>
+                                        
+                                            
+                                                <div class="writer_info">
+                                                    <span class="info_name">
+                                                        <label for="name" class="lab_info screen_out">이름</label>
+                                                        <span class="wrap_info">
+                                                            <input type="text" name="name" id="name" class="inp_info" placeholder="Name" tabindex="1">
+                                                        </span>
+                                                    </span>
+                                                    <span class="info_pw ">
+                                                        <label for="password" class="lab_info screen_out">비밀번호</label>
+                                                        <span class="wrap_info">
+                                                            <input type="password" name="password" id="password" class="inp_info" placeholder="Password" tabindex="2">
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            
+                                            <div class="writer_check">
+                                                <span class="check_secret ">
+                                                    <input type="checkbox" name="secret" id="secret" class="inp_secret" tabindex="4">
+                                                    <label for="secret" class="lab_secret">
+                                                        <span class="ico_skin ico_check"></span>
+                                                        Secret
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        
+
+                                        <div class="reply_write ">
+                                            <label for="comment" class="lab_write screen_out">내용</label>
+                                            <textarea name="comment" id="comment" class="tf_reply" placeholder="여러분의 소중한 댓글을 입력해주세요" tabindex="3"></textarea>
+                                        </div>
+
+                                        <div class="writer_btn">
+                                            <button type="submit" class="btn_enter" onclick="addComment(this, 16); return false;" tabindex="5">Send</button>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div><script type="text/javascript">loadedComments[16]=true;findFragmentAndHighlight(16)</script>
+                        </div>
+
+
+                    
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+                    <div class="area_paging">
+                        <span class="inner_paging">
+                            <a href="https://noirstar.tistory.com/17" class="btn_prev "><span class="ico_skin ico_prev"></span>Prev</a>
+                            
+                                <a href="https://noirstar.tistory.com/347" class="link_page"><span>1</span></a>
+                            
+                                <a class="link_page"><span>···</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/20" class="link_page"><span>307</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/19" class="link_page"><span>308</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/18" class="link_page"><span>309</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/17" class="link_page"><span>310</span></a>
+                            
+                                <a class="link_page"><span class="selected">311</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/15" class="link_page"><span>312</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/14" class="link_page"><span>313</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/13" class="link_page"><span>314</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/12" class="link_page"><span>315</span></a>
+                            
+                                <a class="link_page"><span>···</span></a>
+                            
+                                <a href="https://noirstar.tistory.com/6" class="link_page"><span>321</span></a>
+                            
+                            <a href="https://noirstar.tistory.com/15" class="btn_next ">Next<span class="ico_skin ico_next"></span></a>
+                        </span>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+    <hr class="hide">
+    <div id="dkFoot" role="contentinfo" class="area_foot">
+        <small class="info_copyright">
+            Blog is powered by
+            <a href="http://www.kakaocorp.com/" class="emph_t" target="_blank">kakao</a> / Designed by
+            <a href="http://www.tistory.com/" class="emph_t" target="_blank">Tistory</a>
+					/ Since 2017.01.27
+        </small>
+    </div>
+</div>
+	
+<!--<style type="text/css">* {cursor: url(http://cur.cursors-4u.net/games/gam-4/gam308.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2008/12/23/maple-story-finger-point-4.html" target="_blank" title="MapleStory Finger Point"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="MapleStory Finger Point" style="position:absolute; top: 0px; right: 0px;" /></a>-->
+
+
+
+
+<script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/jquery.nicescroll.min.js.다운로드"></script>
+<script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/script.js.다운로드"></script>
+<script>
+$(window).load(function() {
+
+  /* jQuery 를 이용한 Selector 부분입니다. 
+  위의 제 블로그 스크린샷에서 사용한 스킨과 같은스킨일땐 문제가 없는데, 다른 경우에는 수정을 해주셔야 할겁니다. 
+  SyntaxHighlighter를 추가하시는 분이라면 그정돈 하실줄 아는걸로 판단하고 자세한 설명은 생략합니다. */
+  $("#mArticle .area_view pre[class]").each(function() { try{
+    // 언어식별자를 SyntaxHighlight 처럼 "brush: 언어" 형태로 쓸때 식별을 위한 처리부분
+    var lang = String($(this).attr("class")).match(/brush\:([ a-zA-Z_]*)\;?/)[1]
+    lang = lang.trim().replace(/^js$/i, "javascript");
+    // Ace 플러그인 반영 부분
+    var editor = ace.edit(this);
+    editor.setOptions({ maxLines: Infinity }); // maxLines: Infinity 가 없으면 코드가 다 안보여요
+    editor.setTheme("ace/theme/monokai");      // 테마설정 부분이에요. 원하는걸로 바꾸세요
+    editor.getSession().setMode("ace/mode/"+ lang); // 앞서 "brush:언어" 부분으로 언어 세팅
+    editor.setShowInvisibles(true);            // 탭이나 공백, 엔터 기호를 보여줍니
+    editor.setReadOnly(true);                  // 읽기전용으로 보여줍니다.
+    editor.setShowPrintMargin(false);          // 프린트 가이드라인을 보여줍니다 (비활성화)
+  } catch(ex) { console.info (ex) } })
+
+});
+
+// javascript
+
+
+</script>
+	
+	
+	
+	
+	<script>
+	
+var element = $(".blink");
+
+var shown = true;
+
+
+
+setInterval(toggle, 800);
+
+
+ 
+
+
+
+function toggle() {
+
+   if(shown) {
+
+		   element.hide();
+
+       shown = false;
+
+   } else {
+
+       element.show();
+
+       shown = true;
+
+   }
+
+}
+	</script>
+	
+	
+<script src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/search_dragselection.min.js.다운로드"></script>
+
+	<script>
+	    lightbox.option({
+			"fadeDuration": 200,
+		    "resizeDuration": 200,
+		    "wrapAround": false,
+			"albumLabel": "%1 / %2",
+			"fitImagesInViewport":true ,
+			"stopEvent": false
+	    })
+	</script><script type="text/javascript">
+var _tiq = 'undefined' !== typeof _tiq ? _tiq : [];
+_tiq.push(['__setConfig', {enableScroll:true, enableClick:true, enableButton:true}]);
+_tiq.push(["__setParam", "svcdomain", "user.tistory.com"]);
+(function(d) {
+	var se = d.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	se.src = location.protocol + '//m2.daumcdn.net/tiara/js/td.min.js';
+	var s = d.getElementsByTagName('head')[0]; s.appendChild(se);
+})(document);
+_tiq.push(['__setParam', 'param_ex', JSON.stringify({"userId":"3561524","blogId":"2607124","role":"guest","filterTarget":false,"entryId":"16"})]);
+_tiq.push(['__trackPageview']);
+_tiq.push(['__content', 't_content', {
+'c_id':'2607124_16', 
+'c_title':'[C/C++]NULL, NUL, 0, \\0  의 차이점을 알아보자.', 
+'type':'article', 
+'author':'', 
+'author_id':'3561524', 
+'cp':'NoirStar Space', 
+'cp_id':'2607124', 
+'regdata':'2017-06-10 20:53:09', 
+'plink':'https://noirstar.tistory.com/16', 
+'media':'pcweb', 
+}]);
+var addEvent = function (evt, fn) { window.addEventListener ? window.addEventListener(evt, fn, false) : window.attachEvent('on' + evt, fn); };
+var removeEvent = function(evt, fn) { window.removeEventListener ? window.removeEventListener(evt, fn, false) : window.detachEvent('on' + evt, fn);};
+var ua = navigator.userAgent.toLowerCase(); var isIOS = /iP[ao]d|iPhone/i.test(ua);
+var contentExStat = function() {
+		_tiq.push(['__content', 't_content_ex', {
+			'data_type':'usage'
+, 'meta': {
+'c_id':'2607124_16', 
+'c_title':'[C/C++]NULL, NUL, 0, \\0  의 차이점을 알아보자.', 
+'type':'article', 
+'author':'', 
+'author_id':'3561524', 
+'cp':'NoirStar Space', 
+'cp_id':'2607124', 
+'regdata':'2017-06-10 20:53:09', 
+'plink':'https://noirstar.tistory.com/16', 
+'media':'pcweb', 
+}
+}]);
+		removeEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+};
+addEvent(isIOS ? 'pagehide' : 'beforeunload', contentExStat);
+</script>
+<script type="text/javascript">window.roosevelt_params_queue = window.roosevelt_params_queue || []; window.roosevelt_params_queue.push({channel_id: "dk", channel_label: 'tistory'});</script>
+<script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/roosevelt_dk_bt.js.다운로드" async=""></script>            <script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/tiara.min.js.다운로드"></script>
+            <script type="text/javascript">window.tiara = {"svcDomain":"user.tistory.com","section":"\uae00\ubdf0","trackPage":"\uae00\ubdf0_\ubcf4\uae30","page":"\uae00\ubdf0","key":"2607124-16","customProps":{"userId":0,"blogId":"2607124","role":"guest","filterTarget":false,"trackPage":"\uae00\ubdf0_\ubcf4\uae30","entryId":"16"},"entry":{"entryId":"16","categoryName":"C\u3163C++","categoryId":"675366","author":"3561524","authorId":"3561524","image":"3561524","plink":"\/16","tags":[],"key":"2607124-16"},"sentryDsn":"https:\/\/24d2f6a6e88f4e84885403aabdbd1c7c:e0a560324995426d8fde4d509d4b5ce9@sentry.kakao.com\/894"};</script>
+            <script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/tiara.min.js(1).다운로드"></script>
+                        <script type="text/javascript">
+                window.roosevelt_params_queue = window.roosevelt_params_queue || [{channel_id: 'dk', channel_label: 'tistory'}];
+            </script>
+            <script type="text/javascript" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/roosevelt_dk_bt.js.다운로드" async=""></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script><iframe style="position:absolute;width:1px;height:1px;left:-100px;top:-100px" src="./[C_C++]NULL, NUL, 0, _0 의 차이점을 알아보자._files/api.html" id="editEntry"></iframe><div id="tistoryEtcLayer" class="layer_post" style="display: none;"></div><div id="tistorySnsLayer" class="layer_post" style="display: none;"><div class="bundle_post"><a href="https://noirstar.tistory.com/16#none" class="btn_mark" data-service="facebook"><span class="ico_sns ico_fb"></span>페이스북으로 공유</a><a href="https://noirstar.tistory.com/16#none" class="btn_mark" data-service="kakaotalk"><span class="ico_sns ico_kt"></span>카카오톡으로 공유</a><a href="https://noirstar.tistory.com/16#none" class="btn_mark" data-service="kakaostory"><span class="ico_sns ico_ks"></span>카카오스토리로 공유</a><a href="https://noirstar.tistory.com/16#none" class="btn_mark" data-service="twitter"><span class="ico_sns ico_tw"></span>트위터로 공유</a><a href="https://noirstar.tistory.com/16#none" class="btn_mark" data-service="url"><span class="ico_sns ico_url"></span>URL 복사</a><span class="ico_postbtn ico_arrbt"></span></div></div>
+
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="https://noirstar.tistory.com/16"></a><a class="lb-next" href="https://noirstar.tistory.com/16"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>
