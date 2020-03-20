@@ -23,10 +23,6 @@ int solution(string s) {
             divided.push_back(s.substr(idx, z));
             idx += z;
         }
-        // for(int i = 0 ; i < divided.size() ; ++i){
-        //     cout << divided[i] << "  ";
-        // }
-        // cout << endl;
         
         string target = divided[0];
         int num = 0;
