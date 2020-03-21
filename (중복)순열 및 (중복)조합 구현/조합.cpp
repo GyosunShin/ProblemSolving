@@ -6,18 +6,23 @@
 
 using namespace std;
 
-int map[5];
+int map[4];
 vector<int> picked;
 
 int cnt;
 
 void dfs(int start){
-	if(picked.size() == 3){
-		for(int i = 0 ; i < picked.size() ; ++i){
-			cout << picked[i] << " / ";
-		}
-		cout << endl;
-		++cnt;
+	for(int i = 0 ; i < picked.size() ; ++i){
+		cout << picked[i] << " / ";
+	}
+	cout << endl;
+	
+	if(picked.size() == 4){
+//		for(int i = 0 ; i < picked.size() ; ++i){
+//			cout << picked[i] << " / ";
+//		}
+//		cout << endl;
+//		++cnt;
 		return;
 	}
 	
@@ -29,11 +34,10 @@ void dfs(int start){
 }
 
 int main(){
-	map[0] = 1;
-	map[1] = 2;
-	map[2] = 3;
-	map[3] = 4;
-	map[4] = 5;
+	map[0] = 0;
+	map[1] = 1;
+	map[2] = 2;
+	map[3] = 3;
 	
 	dfs(0);
 	
