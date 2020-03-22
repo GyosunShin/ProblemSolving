@@ -25,6 +25,7 @@ int solution(string word, vector<string> pages){
 	
 	//일단 전부 다 소문자로 변환한다.
 	transform(word.begin(), word.end(), word.begin(), ::tolower);
+	
 	for(int i = 0 ; i < pages.size() ; ++i){
 		string& s = pages[i];
 		transform(s.begin(), s.end(), s.begin(), ::tolower);
