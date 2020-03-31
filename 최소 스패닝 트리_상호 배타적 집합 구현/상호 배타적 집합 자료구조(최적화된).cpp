@@ -16,7 +16,7 @@ struct OptimizedDisjointSet{
 	// u가 속한 트리의 root의 번호를 반환한다. 
 	int find(int u){
 		if(u == parent[u]) return u;
-		return parent[u] = find(parent[u]);
+		return parent[u] = find(parent[u]);		// 경로 압축 최적화(Path Compression) 
 	}
 	
 	// 항상 높이가 더 낮은 트리를 더 높은 트리 밑에 집어넣음으로써 트리의 높이가 높아지는 상황을 방지한다. 
