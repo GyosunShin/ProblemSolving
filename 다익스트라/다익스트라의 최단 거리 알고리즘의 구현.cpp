@@ -19,7 +19,7 @@ vector<int> dijkstra(int src){
 		if(dist[here] < cost)	continue;
 		
 		// 인접한 정점들을 모두 검사한다.
-		for(int i = 0 ; i < adj[here].size() ; ++i) {
+		for(int i = 0 ; i < adj[here].size() ; ++i) {	
 			int there = adj[here][i].first;
 			int nextDist = cost + adj[here][i].second;
 			// 더 짧은 경로를 발견하면, dist[]를 갱신하고 우선순위 큐에 넣는다.

@@ -22,6 +22,8 @@ struct cmp{
     }
 };
 
+priority_queue<INFO, vector<INFO>, cmp> pq;
+
 int main(){
 	
 	INFO one;
@@ -32,8 +34,6 @@ int main(){
 	three.r = 3;	three.c = 3;	three.power = 3;	three.left = 3;
 	INFO four;
 	four.r = 4;	four.c = 1;	four.power = 4;	four.left = 4;
-	
-	priority_queue<INFO, vector<INFO>, cmp> pq;
 	
 	pq.push(one);
 	pq.push(two);
