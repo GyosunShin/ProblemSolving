@@ -16,7 +16,9 @@ void solve(){
 	int right = 0;
 	int sum = pan[0];
 	
-	while(right < N && left < N){
+//	while(right < N && left < N){
+//	while(left <= right && right < N){
+	while(right < N){
 		if(sum > M){
 			sum -= pan[left++];
 			
