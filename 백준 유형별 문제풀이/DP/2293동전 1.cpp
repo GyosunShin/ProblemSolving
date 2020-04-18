@@ -10,8 +10,7 @@ int value[100];
 int cache[100001];
 
 void solve(){
-	
-	cache[0] = 1;
+	cache[0] = 1;	
 	
 	for(int i = 0 ; i < N ; ++i){
 		int cur = value[i];
@@ -21,8 +20,6 @@ void solve(){
 		}
 		
 	}
-	
-	
 }
 
 int main(){
