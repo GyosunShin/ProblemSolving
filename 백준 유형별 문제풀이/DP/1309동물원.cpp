@@ -5,37 +5,21 @@
 
 int N;
 
-int cache[2][100000];
-
-int dfs(int r, int c){
-	
-	if(c == N-1)	return 1;
-	
-	int& ret = cache[r][c];
-	if(ret != -1)	return ret;
-	
-	int sum = 0;
-	
-	sum += dfs(r, )
-	
-	
-}
+// (0 : 아무것도 안한) (1 : 왼쪽) (2 : 오른쪽) 
+int cache[100000][3];
 
 int main(){
-	
-	memset(cache, -1, sizeof(cache));
-	
 	scanf("%d", &N);
 	
-	int ans = 0;
+	cache[0][0] = cache[0][1] = cache[0][2] = 1;
 	
-	ans += dfs(0, 0);
-	ans %= 9901;
-	ans += dfs(1, 0);
-	ans %= 9901;
-	ans += dfs(0, 1);
-	ans %= 9901;
-	ans += dfs(1, 1);
+	for(int i = 1 ; i < N ; ++i){
+		cache[i][0] = (cache[i-1][0] + cache[i-1][1] + cache[i-1][2]) % 9901;
+		cache[i][1] = (cache[i-1][2] + cache[i-1][0]) % 9901;
+		cache[i][2] = (cache[i-1][1] + cache[i-1][0]) % 9901;
+	}
+	
+	int ans = cache[N-1][0] + cache[N-1][1] + cache[N-1][2];
 	ans %= 9901;
 	
 	// OUTPUT
@@ -43,5 +27,4 @@ int main(){
 	printf("%d", ans);
 
 	return 0;
-	
 }
