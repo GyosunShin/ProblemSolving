@@ -16,7 +16,6 @@ int solve(){
 		}
 		else{
 			sum -= pan[left++];
-			
 			if(left > right){
 				sum = pan[left];
 				right = left;
