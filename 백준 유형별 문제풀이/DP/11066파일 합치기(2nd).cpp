@@ -27,7 +27,8 @@ int dfs(int start, int end){
 	int mmax = 0x7fffffff;
 	
 	for(int i = start ; i < end ; ++i){
-		mmax = min(mmax, dfs(start, i) + dfs(i+1, end) + sum[end] - sum[start] + pan[start]);
+		mmax = min(mmax, 
+		dfs(start, i) + dfs(i+1, end) + sum[end] - sum[start] + pan[start]);
 	}
 	
 	return ret = mmax;
