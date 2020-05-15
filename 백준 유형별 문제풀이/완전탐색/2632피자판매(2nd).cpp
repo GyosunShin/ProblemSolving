@@ -54,11 +54,6 @@ void solve(){
 		}
 	}	
 	
-//	for(int i = 0 ; i < a.size() ; ++i)	printf("%d  ", a[i]);
-//	printf("\n");
-//	for(int i = 0 ; i < b.size() ; ++i)	printf("%d  ", b[i]);
-//	printf("\n");
-	
 	sort(a.begin(), a.end());	sort(b.begin(), b.end());
 	
 	for(int i = 0 ; i < a.size() ; ++i){
