@@ -13,6 +13,7 @@ int ans;
 int ccnt;
 
 void solve(int start, int cnt){
+	
 	if(ans == S && cnt > 0)	ccnt++;
 	
 	if(cnt == N)	return;
