@@ -9,7 +9,6 @@ priority_queue<int, vector<int>, greater<int>> pq;
 
 // 밑에 처럼 쓰면 내림차순 
 //priority_queue<int> pq;  
- 
 
 //bool operator<(int a, int b){
 //	return (a > b);
