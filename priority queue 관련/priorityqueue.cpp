@@ -1,5 +1,6 @@
 #include <cstdio>
 #include <queue>
+
 using namespace std;
  
 // 원래 greater는 내림차순이라는데 왜 pq에 쓰이면 Min Heap을 만들어주는거지
@@ -7,7 +8,7 @@ using namespace std;
 priority_queue<int, vector<int>, greater<int>> pq;  
 //priority_queue<int, vector<int>, less<int>> pq;    // less쓰면 내림차순(큰거부터 top() pop())
 
-// 밑에 처럼 쓰면 내림차순 
+// 밑에 처럼 쓰면 내림차순 = (default : MAX HEAP)
 //priority_queue<int> pq;  
 
 //bool operator<(int a, int b){

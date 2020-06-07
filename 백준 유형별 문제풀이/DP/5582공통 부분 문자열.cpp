@@ -52,7 +52,7 @@ int main(){
 	
 	memset(cache, -1, sizeof(cache));
 	
-	printf("%d", dfs(0,0,false));
+	printf("%d", dfs(0, 0, false));
 	
 	return 0;
 }
