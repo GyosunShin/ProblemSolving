@@ -34,9 +34,9 @@ int solve(){
 	int tmp_ret = -1 * 0x7fffffff; 
 	
 	tmp_ret = max(tmp_ret, dfs(0,0));
-	tmp_ret = max(tmp_ret, dfs(0,1));
+//	tmp_ret = max(tmp_ret, dfs(0,1));
 	tmp_ret = max(tmp_ret, dfs(1,0));
-	tmp_ret = max(tmp_ret, dfs(1,1));
+//	tmp_ret = max(tmp_ret, dfs(1,1));
 	
 	return tmp_ret;
 }

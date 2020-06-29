@@ -38,7 +38,7 @@ void topological_sort(){
 			int nextV = graph[curV][i];
 			int nextWeight = workTime[nextV] + sofar;
 			
-			if(cache[nextV] != -1 && cache[nextV] <= nextWeight)	continue;
+//			if(cache[nextV] != -1 && cache[nextV] <= nextWeight)	continue;
 			
 			inDegree[nextV]--;
 			if(inDegree[nextV] == 0){
